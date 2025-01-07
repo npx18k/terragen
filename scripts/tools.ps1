@@ -1,5 +1,5 @@
 Write-Host "Installing required tools via Chocolatey..."
-choco install notepadplusplus jq -y
+choco install notepadplusplus -y
 
 # Define the URL and local path for the Temurin JRE installer
 $TemurinUrl = "https://api.adoptium.net/v3/installer/latest/23/ga/windows/x64/jre/hotspot/normal/eclipse"
