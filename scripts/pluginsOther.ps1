@@ -19,7 +19,7 @@ try {
 }
 
 try {
-    Invoke-WebRequest -Uri $LoginSecurityUrl -OutFile "$PluginsDirectory\Builders-Utilities-2.1.1-124.jar"
+    Invoke-WebRequest -Uri $BuildersUtilitiesUrl -OutFile "$PluginsDirectory\Builders-Utilities-2.1.1-124.jar"
     Write-Host "Download completed successfully."
 } catch {
     Write-Error "Failed to download BuildersUtilities: $_"
