@@ -47,8 +47,8 @@ function Get-CompatiblePluginVersion {
         # Filter versions based on criteria
         $FilteredVersions = $Versions | Where-Object {
             $_.game_versions -contains $MinecraftVersion -and
-            ($AllowUnstable -or $_.version_type -eq "release") -and
-            ($_.loaders | Where-Object { $LoadersArray -contains $_ })
+            ($_.loaders | Where-Object { $LoadersArray -contains $_ }) -and
+            ($_.version_type -eq "release" -or ($AllowUnstable -and $_.version_type -ne "release"))
         }
 
         if (-not $FilteredVersions) {
@@ -56,8 +56,10 @@ function Get-CompatiblePluginVersion {
             return $null
         }
 
-        # Sort versions by date_published, prioritizing the latest version
-        $SortedVersions = $FilteredVersions | Sort-Object { $_.date_published } -Descending
+        # Sort versions by version_type and then by date_published
+        $SortedVersions = $FilteredVersions |
+            Sort-Object -Property @{ Expression = { $_.version_type -eq "release" }; Descending = $true },
+                                    @{ Expression = { $_.date_published }; Descending = $true }
 
         return $SortedVersions[0]
     } catch {
