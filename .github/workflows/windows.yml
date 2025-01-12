@@ -42,7 +42,7 @@ jobs:
         run: |
           ./scripts/tools.ps1
           ./scripts/paper.ps1
-          ./scripts/pluginsModrinth.ps1 -Plugins chunky,worldguard,fastasyncworldedit,squaremap,viaversion,multiverse-core -MinecraftVersion 1.21.1 -AllowUnstable -Loaders "paper,bukkit"
+          ./scripts/pluginsModrinth.ps1 -Plugins chunky,worldguard,fastasyncworldedit,squaremap,viaversion -MinecraftVersion 1.21.1 -AllowUnstable -Loaders "paper,bukkit"
           ./scripts/pluginsOther.ps1
         shell: pwsh
 
